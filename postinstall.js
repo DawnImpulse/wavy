@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var dirname = __dirname.replace(/\\/g, '/');
+var dirname = process.cwd().replace(/\\/g, '/');
 var root = path.resolve(dirname.slice(0, dirname.lastIndexOf('/node_modules/')));
 var link = root + '/node_modules/~';
 try {
