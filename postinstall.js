@@ -1,8 +1,13 @@
 var fs = require('fs');
 var path = require('path');
+var root;
 
-var dirname = process.cwd().replace(/\\/g, '/');
-var root = path.resolve(dirname.slice(0, dirname.lastIndexOf('/node_modules/')));
+var dirname = process.env.INIT_CWD.replace(/\\/g, '/');
+if(dirname.lastIndexOf('/node_modules/') !== -1)
+  root = path.resolve(dirname.slice(0, dirname.lastIndexOf('/node_modules/')));
+else
+  root = dirname;
+  
 var link = root + '/node_modules/~';
 try {
   var existingReal = path.resolve(fs.realpathSync(link));
